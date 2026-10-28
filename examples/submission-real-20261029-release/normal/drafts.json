@@ -1,0 +1,26 @@
+[
+  {
+    "draft_id": "D001",
+    "dedup_key": "e2add040328203a040b08aae58eb24b67aafeaa5",
+    "date": "2026-10-28",
+    "material_id": "M02",
+    "pending_confirmations": [],
+    "review_status": "approved",
+    "risk_reasons": [],
+    "time": "10:00"
+  },
+  {
+    "draft_id": "D002",
+    "dedup_key": "582a2d1df9e0c55ed510778f70aea3fbf06093b8",
+    "date": "2026-10-28",
+    "material_id": "M01",
+    "pending_confirmations": [
+      "软性要求偏好 18:00，但该时段已被 M99 占用；已提供替代时段 19:00（当日 16:00-20:00 区间唯一空闲时段），待确认是否接受"
+    ],
+    "review_status": "pending_confirmation",
+    "risk_reasons": [
+      "目标时段 18:00 已被 M99 占用"
+    ],
+    "time": "19:00"
+  }
+]

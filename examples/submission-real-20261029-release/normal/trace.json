@@ -1,0 +1,356 @@
+{
+  "meta": {
+    "case": "normal",
+    "input": "examples/input_normal.json",
+    "mode": "real",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "started_at_utc": "2026-10-28T16:25:29.315325+00:00",
+    "source_sha256": "253e6e74f906af59666f9ec0736fa7c30ed7672959c1c3fc8cfb1ae2cc41e0d0"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M01"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M01",
+        "material": {
+          "id": "M01",
+          "title": "新品发布会预告",
+          "content_type": "video",
+          "category": "marketing",
+          "author": "team_a",
+          "duration_minutes": 3
+        },
+        "missing_fields": []
+      },
+      "next_action": "read_material",
+      "decision_basis": "需要确认 M01 的素材信息与目标时段 18:00（软性要求）。"
+    },
+    {
+      "step": 2,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M02"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M02",
+        "material": {
+          "id": "M02",
+          "title": "产品使用教程",
+          "content_type": "article",
+          "category": "education",
+          "author": "team_b",
+          "duration_minutes": null
+        },
+        "missing_fields": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "需要确认 M02 的素材信息与目标时段 10:00（软性要求）。"
+    },
+    {
+      "step": 3,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M01"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M01",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": false,
+        "any_risk": false,
+        "risk_reasons": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "M01 元数据完整（视频，3 分钟），需查询审核规则以确定可发布性与是否需确认。"
+    },
+    {
+      "step": 4,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M02"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M02",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": false,
+        "any_risk": false,
+        "risk_reasons": []
+      },
+      "next_action": "query_slots",
+      "decision_basis": "M02 元数据完整（文章），需查询审核规则以确定可发布性与是否需确认。"
+    },
+    {
+      "step": 5,
+      "tool": "query_slots",
+      "args": {
+        "material_id": "M01",
+        "date": "2026-10-28",
+        "start_time": "18:00",
+        "end_time": "18:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M01",
+        "slots": [
+          {
+            "time": "18:00",
+            "status": "occupied",
+            "occupied_by": "M99"
+          }
+        ],
+        "free_times": []
+      },
+      "next_action": "query_slots",
+      "decision_basis": "M01 规则全通过，需核对 2026-10-28 18:00 是否空闲以确认软性要求时段。"
+    },
+    {
+      "step": 6,
+      "tool": "query_slots",
+      "args": {
+        "material_id": "M02",
+        "date": "2026-10-28",
+        "start_time": "10:00",
+        "end_time": "10:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M02",
+        "slots": [
+          {
+            "time": "10:00",
+            "status": "free"
+          }
+        ],
+        "free_times": [
+          "10:00"
+        ]
+      },
+      "next_action": "query_slots",
+      "decision_basis": "M02 规则全通过，需核对 2026-10-28 10:00 是否空闲以确认软性要求时段。"
+    },
+    {
+      "step": 7,
+      "tool": "query_slots",
+      "args": {
+        "date": "2026-10-28",
+        "end_time": "20:00",
+        "material_id": "M01",
+        "start_time": "16:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M01",
+        "slots": [
+          {
+            "time": "18:00",
+            "status": "occupied",
+            "occupied_by": "M99"
+          },
+          {
+            "time": "19:00",
+            "status": "free"
+          },
+          {
+            "time": "20:00",
+            "status": "occupied",
+            "occupied_by": "M98"
+          }
+        ],
+        "free_times": [
+          "19:00"
+        ]
+      },
+      "next_action": "save_draft",
+      "decision_basis": "M01 的 18:00 被 M99 占用，查询 16:00-20:00 区间以寻找替代时段。"
+    },
+    {
+      "step": 8,
+      "tool": "save_draft",
+      "args": {
+        "date": "2026-10-28",
+        "material_id": "M02",
+        "pending_confirmations": [],
+        "review_status": "approved",
+        "risk_reasons": [],
+        "time": "10:00"
+      },
+      "result_summary": {
+        "saved": true,
+        "duplicate": false,
+        "draft_status": "saved",
+        "draft_id": "D001",
+        "draft": {
+          "draft_id": "D001",
+          "dedup_key": "e2add040328203a040b08aae58eb24b67aafeaa5",
+          "date": "2026-10-28",
+          "material_id": "M02",
+          "pending_confirmations": [],
+          "review_status": "approved",
+          "risk_reasons": [],
+          "time": "10:00"
+        }
+      },
+      "next_action": "save_draft",
+      "decision_basis": "M02 软性要求 10:00，查询显示 10:00 空闲且规则全通过，按目标时段保存草稿。"
+    },
+    {
+      "step": 9,
+      "tool": "save_draft",
+      "args": {
+        "date": "2026-10-28",
+        "material_id": "M01",
+        "pending_confirmations": [
+          "软性要求偏好 18:00，但该时段已被 M99 占用；已提供替代时段 19:00（当日 16:00-20:00 区间唯一空闲时段），待确认是否接受"
+        ],
+        "review_status": "pending_confirmation",
+        "risk_reasons": [
+          "目标时段 18:00 已被 M99 占用"
+        ],
+        "time": "19:00"
+      },
+      "result_summary": {
+        "saved": true,
+        "duplicate": false,
+        "draft_status": "saved",
+        "draft_id": "D002",
+        "draft": {
+          "draft_id": "D002",
+          "dedup_key": "582a2d1df9e0c55ed510778f70aea3fbf06093b8",
+          "date": "2026-10-28",
+          "material_id": "M01",
+          "pending_confirmations": [
+            "软性要求偏好 18:00，但该时段已被 M99 占用；已提供替代时段 19:00（当日 16:00-20:00 区间唯一空闲时段），待确认是否接受"
+          ],
+          "review_status": "pending_confirmation",
+          "risk_reasons": [
+            "目标时段 18:00 已被 M99 占用"
+          ],
+          "time": "19:00"
+        }
+      },
+      "next_action": "finish",
+      "decision_basis": "M01 目标时段 18:00 被 M99 占用，16:00-20:00 区间仅 19:00 空闲，按软性要求冲突规则给替代时段并标记待确认。"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M01",
+          "review_status": "pending_confirmation",
+          "risk_reasons": [
+            "目标时段 18:00 已被 M99 占用"
+          ],
+          "suggested_slot": {
+            "date": "2026-10-28",
+            "time": "19:00"
+          },
+          "pending_confirmations": [
+            "软性要求偏好 18:00，但该时段已被 M99 占用；已提供替代时段 19:00（当日 16:00-20:00 区间唯一空闲时段），待确认是否接受"
+          ],
+          "draft_status": "saved",
+          "draft_id": "D002",
+          "error": null
+        },
+        {
+          "material_id": "M02",
+          "review_status": "approved",
+          "risk_reasons": [],
+          "suggested_slot": {
+            "date": "2026-10-28",
+            "time": "10:00"
+          },
+          "pending_confirmations": [],
+          "draft_status": "saved",
+          "draft_id": "D001",
+          "error": null
+        }
+      ],
+      "unfinished": false,
+      "summary": {
+        "total": 2,
+        "approved": 1,
+        "blocked": 0,
+        "pending_confirmation": 1,
+        "info_missing": 0,
+        "draft_failed": 0
+      }
+    },
+    "decision_basis": "M02 目标 10:00 空闲且规则全通过，已按 10:00 存草稿 D001；M01 目标 18:00 被 M99 占用，替代 19:00 存草稿 D002 并标记待确认。"
+  }
+}

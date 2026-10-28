@@ -1,0 +1,183 @@
+{
+  "meta": {
+    "case": "save_fail",
+    "input": "examples/input_save_fail.json",
+    "mode": "real",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "started_at_utc": "2026-10-28T16:26:19.232898+00:00",
+    "source_sha256": "253e6e74f906af59666f9ec0736fa7c30ed7672959c1c3fc8cfb1ae2cc41e0d0"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M02"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M02",
+        "material": {
+          "id": "M02",
+          "title": "产品使用教程",
+          "content_type": "article",
+          "category": "education",
+          "author": "team_b",
+          "duration_minutes": null
+        },
+        "missing_fields": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "请求排期 M02 至 2026-10-28 10:00（软性偏好），先读取素材元数据。"
+    },
+    {
+      "step": 2,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M02"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M02",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": false,
+        "any_risk": false,
+        "risk_reasons": []
+      },
+      "next_action": "query_slots",
+      "decision_basis": "读取素材后需执行审核规则检查以确认是否有 confirm/warn/block 动作。"
+    },
+    {
+      "step": 3,
+      "tool": "query_slots",
+      "args": {
+        "material_id": "M02",
+        "date": "2026-10-28",
+        "start_time": "10:00",
+        "end_time": "11:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M02",
+        "slots": [
+          {
+            "time": "10:00",
+            "status": "free"
+          },
+          {
+            "time": "11:00",
+            "status": "free"
+          }
+        ],
+        "free_times": [
+          "10:00",
+          "11:00"
+        ]
+      },
+      "next_action": "save_draft",
+      "decision_basis": "M02 规则检查全部通过且无风险，查询 2026-10-28 10:00 时段占用情况。"
+    },
+    {
+      "step": 4,
+      "tool": "save_draft",
+      "args": {
+        "material_id": "M02",
+        "date": "2026-10-28",
+        "time": "10:00",
+        "review_status": "approved",
+        "pending_confirmations": [],
+        "risk_reasons": []
+      },
+      "result_summary": {
+        "saved": false,
+        "draft_status": "failed",
+        "error": "保存后端异常，草稿未写入"
+      },
+      "next_action": "save_draft",
+      "decision_basis": "10:00 时段空闲，规则检查无 confirm/warn/block，素材字段完整，按软性偏好 10:00 保存草稿。"
+    },
+    {
+      "step": 5,
+      "tool": "save_draft",
+      "args": {
+        "date": "2026-10-28",
+        "material_id": "M02",
+        "pending_confirmations": [],
+        "review_status": "approved",
+        "risk_reasons": [],
+        "time": "10:00"
+      },
+      "result_summary": {
+        "saved": false,
+        "draft_status": "failed",
+        "error": "保存后端异常，草稿未写入"
+      },
+      "next_action": "finish",
+      "decision_basis": "首次保存返回后端异常，重试保存同一时段 2026-10-28 10:00（save_draft 自动去重）。"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M02",
+          "review_status": "approved",
+          "risk_reasons": [],
+          "suggested_slot": {
+            "date": "2026-10-28",
+            "time": "10:00"
+          },
+          "pending_confirmations": [],
+          "draft_status": "failed",
+          "draft_id": null,
+          "error": "保存后端异常，草稿未写入"
+        }
+      ],
+      "unfinished": false,
+      "summary": {
+        "total": 1,
+        "approved": 1,
+        "blocked": 0,
+        "pending_confirmation": 0,
+        "info_missing": 0,
+        "draft_failed": 1
+      }
+    },
+    "decision_basis": "M02 规则检查全部通过、字段完整，10:00 时段空闲；两次 save_draft 均返回后端异常，草稿未写入，故 review_status=approved 但 draft_status=failed。"
+  }
+}

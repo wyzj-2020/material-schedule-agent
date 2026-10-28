@@ -1,0 +1,23 @@
+{
+  "results": [
+    {
+      "material_id": "M05",
+      "review_status": "blocked",
+      "risk_reasons": [],
+      "suggested_slot": null,
+      "pending_confirmations": [],
+      "draft_status": "none",
+      "draft_id": null,
+      "error": null
+    }
+  ],
+  "unfinished": false,
+  "summary": {
+    "total": 1,
+    "approved": 0,
+    "blocked": 1,
+    "pending_confirmation": 0,
+    "info_missing": 0,
+    "draft_failed": 0
+  }
+}

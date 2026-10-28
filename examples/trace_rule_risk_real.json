@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "input": "examples/input_rule_risk.json",
+    "mode": "real",
+    "max_steps": 12
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M04"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M04",
+        "material": {
+          "id": "M04",
+          "title": "热点追踪报道",
+          "content_type": "article",
+          "category": "sensitive",
+          "author": "team_c",
+          "duration_minutes": null
+        },
+        "missing_fields": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "模型依据观察结果选择该动作"
+    },
+    {
+      "step": 2,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M04"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M04",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": false,
+            "severity": "high",
+            "action": "block",
+            "message": "类别为敏感内容，需人工复核后方可排期"
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": true,
+        "any_risk": true,
+        "risk_reasons": [
+          "类别为敏感内容，需人工复核后方可排期"
+        ]
+      },
+      "next_action": "finish",
+      "decision_basis": "模型依据观察结果选择该动作"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M04",
+          "review_status": "blocked",
+          "risk_reasons": [
+            "类别为敏感内容，需人工复核后方可排期（规则 R1，high，block）"
+          ],
+          "suggested_slot": null,
+          "pending_confirmations": [],
+          "draft_status": "none",
+          "draft_id": null,
+          "error": null
+        }
+      ],
+      "unfinished": false,
+      "summary": {
+        "total": 1,
+        "approved": 0,
+        "blocked": 1,
+        "pending_confirmation": 0,
+        "info_missing": 0,
+        "draft_failed": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "results": [
+    {
+      "material_id": "M03",
+      "review_status": "info_missing",
+      "risk_reasons": [
+        "缺少必填字段: 时长"
+      ],
+      "suggested_slot": null,
+      "pending_confirmations": [
+        "请补充缺失信息后重新提交"
+      ],
+      "draft_status": "none",
+      "draft_id": null,
+      "error": null
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "approved": 0,
+    "blocked": 0,
+    "pending_confirmation": 0,
+    "info_missing": 1,
+    "draft_failed": 0
+  },
+  "unfinished": false
+}

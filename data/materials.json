@@ -1,0 +1,38 @@
+{
+  "M01": {
+    "id": "M01",
+    "title": "新品发布会预告",
+    "content_type": "video",
+    "category": "marketing",
+    "author": "team_a",
+    "duration_minutes": 3
+  },
+  "M02": {
+    "id": "M02",
+    "title": "产品使用教程",
+    "content_type": "article",
+    "category": "education",
+    "author": "team_b"
+  },
+  "M03": {
+    "id": "M03",
+    "title": "用户访谈实录",
+    "content_type": "video",
+    "category": "interview",
+    "author": "team_a"
+  },
+  "M04": {
+    "id": "M04",
+    "title": "热点追踪报道",
+    "content_type": "article",
+    "category": "sensitive",
+    "author": "team_c"
+  },
+  "M05": {
+    "id": "M05",
+    "title": "重要公告",
+    "content_type": "article",
+    "category": "announcement",
+    "author": "team_a"
+  }
+}

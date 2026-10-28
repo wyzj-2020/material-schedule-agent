@@ -1,0 +1,338 @@
+{
+  "meta": {
+    "input": "examples/input_normal.json",
+    "mode": "mock",
+    "max_steps": 12
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M01"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M01",
+        "material": {
+          "id": "M01",
+          "title": "新品发布会预告",
+          "content_type": "video",
+          "category": "marketing",
+          "author": "team_a",
+          "duration_minutes": 3
+        },
+        "missing_fields": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "开始处理 M01，先读取元数据"
+    },
+    {
+      "step": 2,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M01"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M01",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": false,
+        "any_risk": false,
+        "risk_reasons": []
+      },
+      "next_action": "query_slots",
+      "decision_basis": "元数据完整，进入规则检查"
+    },
+    {
+      "step": 3,
+      "tool": "query_slots",
+      "args": {
+        "material_id": "M01",
+        "date": "2026-10-28",
+        "start_time": "18:00",
+        "end_time": "18:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M01",
+        "slots": [
+          {
+            "time": "18:00",
+            "status": "occupied",
+            "occupied_by": "M99"
+          }
+        ],
+        "free_times": []
+      },
+      "next_action": "query_slots",
+      "decision_basis": "规则无阻断，查询目标时段 18:00 的占用情况"
+    },
+    {
+      "step": 4,
+      "tool": "query_slots",
+      "args": {
+        "material_id": "M01",
+        "date": "2026-10-28"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M01",
+        "slots": [
+          {
+            "time": "10:00",
+            "status": "free"
+          },
+          {
+            "time": "11:00",
+            "status": "free"
+          },
+          {
+            "time": "18:00",
+            "status": "occupied",
+            "occupied_by": "M99"
+          },
+          {
+            "time": "19:00",
+            "status": "free"
+          },
+          {
+            "time": "20:00",
+            "status": "occupied",
+            "occupied_by": "M98"
+          },
+          {
+            "time": "21:00",
+            "status": "free"
+          }
+        ],
+        "free_times": [
+          "10:00",
+          "11:00",
+          "19:00",
+          "21:00"
+        ]
+      },
+      "next_action": "save_draft",
+      "decision_basis": "目标时段 18:00 被 M99 占用，扩大范围查询可用时段"
+    },
+    {
+      "step": 5,
+      "tool": "save_draft",
+      "args": {
+        "material_id": "M01",
+        "date": "2026-10-28",
+        "time": "19:00",
+        "review_status": "pending_confirmation",
+        "pending_confirmations": [
+          "目标时段 18:00 被占用，建议调整为 19:00，请确认"
+        ],
+        "risk_reasons": []
+      },
+      "result_summary": {
+        "saved": true,
+        "duplicate": true,
+        "draft_status": "duplicate",
+        "draft_id": "D001",
+        "note": "相同请求已存在草稿，未重复创建"
+      },
+      "next_action": "read_material",
+      "decision_basis": "18:00 被占用，找到最近空闲 19:00，建议替代并标记待确认"
+    },
+    {
+      "step": 6,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M02"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M02",
+        "material": {
+          "id": "M02",
+          "title": "产品使用教程",
+          "content_type": "article",
+          "category": "education",
+          "author": "team_b",
+          "duration_minutes": null
+        },
+        "missing_fields": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "开始处理 M02，先读取元数据"
+    },
+    {
+      "step": 7,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M02"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M02",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": false,
+        "any_risk": false,
+        "risk_reasons": []
+      },
+      "next_action": "query_slots",
+      "decision_basis": "元数据完整，进入规则检查"
+    },
+    {
+      "step": 8,
+      "tool": "query_slots",
+      "args": {
+        "material_id": "M02",
+        "date": "2026-10-28",
+        "start_time": "10:00",
+        "end_time": "10:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M02",
+        "slots": [
+          {
+            "time": "10:00",
+            "status": "free"
+          }
+        ],
+        "free_times": [
+          "10:00"
+        ]
+      },
+      "next_action": "save_draft",
+      "decision_basis": "规则无阻断，查询目标时段 10:00 的占用情况"
+    },
+    {
+      "step": 9,
+      "tool": "save_draft",
+      "args": {
+        "material_id": "M02",
+        "date": "2026-10-28",
+        "time": "10:00",
+        "review_status": "approved",
+        "pending_confirmations": [],
+        "risk_reasons": []
+      },
+      "result_summary": {
+        "saved": true,
+        "duplicate": true,
+        "draft_status": "duplicate",
+        "draft_id": "D002",
+        "note": "相同请求已存在草稿，未重复创建"
+      },
+      "next_action": "finish",
+      "decision_basis": "目标时段 10:00 空闲，直接排期并保存草稿"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M01",
+          "review_status": "pending_confirmation",
+          "risk_reasons": [],
+          "suggested_slot": {
+            "date": "2026-10-28",
+            "time": "19:00"
+          },
+          "pending_confirmations": [
+            "目标时段 18:00 被占用，建议调整为 19:00，请确认"
+          ],
+          "draft_status": "duplicate",
+          "draft_id": "D001",
+          "error": null
+        },
+        {
+          "material_id": "M02",
+          "review_status": "approved",
+          "risk_reasons": [],
+          "suggested_slot": {
+            "date": "2026-10-28",
+            "time": "10:00"
+          },
+          "pending_confirmations": [],
+          "draft_status": "duplicate",
+          "draft_id": "D002",
+          "error": null
+        }
+      ],
+      "summary": {
+        "total": 2,
+        "approved": 1,
+        "blocked": 0,
+        "pending_confirmation": 1,
+        "info_missing": 0,
+        "draft_failed": 0
+      },
+      "unfinished": false
+    }
+  }
+}

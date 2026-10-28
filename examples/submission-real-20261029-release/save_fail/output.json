@@ -1,0 +1,26 @@
+{
+  "results": [
+    {
+      "material_id": "M02",
+      "review_status": "approved",
+      "risk_reasons": [],
+      "suggested_slot": {
+        "date": "2026-10-28",
+        "time": "10:00"
+      },
+      "pending_confirmations": [],
+      "draft_status": "failed",
+      "draft_id": null,
+      "error": "保存后端异常，草稿未写入"
+    }
+  ],
+  "unfinished": false,
+  "summary": {
+    "total": 1,
+    "approved": 1,
+    "blocked": 0,
+    "pending_confirmation": 0,
+    "info_missing": 0,
+    "draft_failed": 1
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "input": "examples/input_missing_info.json",
+    "mode": "mock",
+    "max_steps": 12
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M03"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M03",
+        "material": {
+          "id": "M03",
+          "title": "用户访谈实录",
+          "content_type": "video",
+          "category": "interview",
+          "author": "team_a",
+          "duration_minutes": null
+        },
+        "missing_fields": [
+          "duration_minutes"
+        ]
+      },
+      "next_action": "finish",
+      "decision_basis": "开始处理 M03，先读取元数据"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M03",
+          "review_status": "info_missing",
+          "risk_reasons": [
+            "缺少必填字段: 时长"
+          ],
+          "suggested_slot": null,
+          "pending_confirmations": [
+            "请补充缺失信息后重新提交"
+          ],
+          "draft_status": "none",
+          "draft_id": null,
+          "error": null
+        }
+      ],
+      "summary": {
+        "total": 1,
+        "approved": 0,
+        "blocked": 0,
+        "pending_confirmation": 0,
+        "info_missing": 1,
+        "draft_failed": 0
+      },
+      "unfinished": false
+    }
+  }
+}

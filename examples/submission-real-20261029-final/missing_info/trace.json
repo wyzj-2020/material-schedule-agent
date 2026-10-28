@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "case": "missing_info",
+    "input": "examples/input_missing_info.json",
+    "mode": "real",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "started_at_utc": "2026-10-28T16:21:42.379370+00:00",
+    "source_sha256": "9bf1913b50ebebe17b67814bc7a26ab9b2568685c72a072883a42cbc9b92b12c"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M03"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M03",
+        "material": {
+          "id": "M03",
+          "title": "用户访谈实录",
+          "content_type": "video",
+          "category": "interview",
+          "author": "team_a",
+          "duration_minutes": null
+        },
+        "missing_fields": [
+          "duration_minutes"
+        ]
+      },
+      "next_action": "check_rule",
+      "decision_basis": "请求为 M03 在 2026-10-28 的 11:00 发布，需求为 soft 倾向 11:00；先读取素材元数据确认完整信息。"
+    },
+    {
+      "step": 2,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M03"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M03",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": false,
+            "severity": "high",
+            "action": "block",
+            "message": "视频素材缺少时长信息，无法校验时段长度"
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": true,
+        "any_risk": true,
+        "risk_reasons": [
+          "视频素材缺少时长信息，无法校验时段长度"
+        ]
+      },
+      "next_action": "finish",
+      "decision_basis": "素材 M03 元数据缺少 duration_minutes，先执行规则检查确认是否影响审核与排期。"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M03",
+          "review_status": "blocked",
+          "risk_reasons": [
+            "视频素材缺少时长信息，无法校验时段长度"
+          ],
+          "suggested_slot": null,
+          "pending_confirmations": [],
+          "draft_status": "none",
+          "draft_id": null,
+          "error": null
+        }
+      ],
+      "unfinished": false,
+      "summary": {
+        "total": 1,
+        "approved": 0,
+        "blocked": 1,
+        "pending_confirmation": 0,
+        "info_missing": 0,
+        "draft_failed": 0
+      }
+    },
+    "decision_basis": "read_material 显示 M03 缺 duration_minutes；check_rule 命中 R2 阻断（any_block=true），故审核状态为 blocked，未查询时段也未调用 save_draft（草稿状态 none）。"
+  }
+}

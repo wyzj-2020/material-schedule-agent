@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "case": "rule_risk",
+    "input": "examples/input_rule_risk.json",
+    "mode": "real",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "started_at_utc": "2026-10-28T16:21:37.272530+00:00",
+    "source_sha256": "9bf1913b50ebebe17b67814bc7a26ab9b2568685c72a072883a42cbc9b92b12c"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M04"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M04",
+        "material": {
+          "id": "M04",
+          "title": "热点追踪报道",
+          "content_type": "article",
+          "category": "sensitive",
+          "author": "team_c",
+          "duration_minutes": null
+        },
+        "missing_fields": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "请求为 M04 在 2026-10-28 的 10:00 发布，需求为软性（kind=soft），先读取素材元数据。"
+    },
+    {
+      "step": 2,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M04"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M04",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": false,
+            "severity": "high",
+            "action": "block",
+            "message": "类别为敏感内容，需人工复核后方可排期"
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": true,
+        "any_risk": true,
+        "risk_reasons": [
+          "类别为敏感内容，需人工复核后方可排期"
+        ]
+      },
+      "next_action": "finish",
+      "decision_basis": "素材信息完整（分类为 sensitive 的图文），无缺失字段，执行审核规则检查。"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M04",
+          "review_status": "blocked",
+          "risk_reasons": [
+            "类别为敏感内容，需人工复核后方可排期"
+          ],
+          "suggested_slot": null,
+          "pending_confirmations": [],
+          "draft_status": "none",
+          "draft_id": null,
+          "error": null
+        }
+      ],
+      "unfinished": false,
+      "summary": {
+        "total": 1,
+        "approved": 0,
+        "blocked": 1,
+        "pending_confirmation": 0,
+        "info_missing": 0,
+        "draft_failed": 0
+      }
+    },
+    "decision_basis": "规则检查命中 R1（sensitive 类别，action=block，需人工复核），any_block=true，因此阻断且不调用 save_draft，草稿状态为 none。"
+  }
+}

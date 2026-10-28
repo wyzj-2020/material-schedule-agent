@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "case": "normal",
+    "input": "examples/input_normal.json",
+    "mode": "real",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "started_at_utc": "2026-10-28T16:14:50.038557+00:00",
+    "source_sha256": "3892a5182df3cdfe0318540e2cdbcc0a7d16dfde5fe374b7dac52165ad0c6b1d"
+  },
+  "steps": [],
+  "final": {
+    "unfinished": true,
+    "result": {
+      "results": [],
+      "summary": {
+        "total": 0,
+        "approved": 0,
+        "blocked": 0,
+        "pending_confirmation": 0,
+        "info_missing": 0,
+        "draft_failed": 0
+      },
+      "unfinished": true,
+      "reason": "模型决策失败（ProxyError），任务未完成",
+      "steps_executed": 1,
+      "completed": 0
+    }
+  }
+}

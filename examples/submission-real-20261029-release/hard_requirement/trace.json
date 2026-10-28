@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "case": "hard_requirement",
+    "input": "examples/input_hard_requirement.json",
+    "mode": "real",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "started_at_utc": "2026-10-28T16:26:06.932353+00:00",
+    "source_sha256": "253e6e74f906af59666f9ec0736fa7c30ed7672959c1c3fc8cfb1ae2cc41e0d0"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M05"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M05",
+        "material": {
+          "id": "M05",
+          "title": "重要公告",
+          "content_type": "article",
+          "category": "announcement",
+          "author": "team_a",
+          "duration_minutes": null
+        },
+        "missing_fields": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "读取 M05 素材元数据以确认信息是否完整"
+    },
+    {
+      "step": 2,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M05"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M05",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": false,
+        "any_risk": false,
+        "risk_reasons": []
+      },
+      "next_action": "query_slots",
+      "decision_basis": "对 M05 执行审核规则检查，确认是否有 confirm/warn/block 动作"
+    },
+    {
+      "step": 3,
+      "tool": "query_slots",
+      "args": {
+        "material_id": "M05",
+        "date": "2026-10-28",
+        "start_time": "18:00",
+        "end_time": "19:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M05",
+        "slots": [
+          {
+            "time": "18:00",
+            "status": "occupied",
+            "occupied_by": "M99"
+          },
+          {
+            "time": "19:00",
+            "status": "free"
+          }
+        ],
+        "free_times": [
+          "19:00"
+        ]
+      },
+      "next_action": "save_draft",
+      "decision_basis": "规则检查全部通过，查询 2026-10-28 18:00 时段占用情况以核对硬性目标时段是否可用"
+    },
+    {
+      "step": 4,
+      "tool": "save_draft",
+      "args": {
+        "material_id": "M05",
+        "date": "2026-10-28",
+        "time": "19:00",
+        "review_status": "pending_confirmation",
+        "pending_confirmations": [
+          "18:00 已被 M99 占用，而 M05 为硬性要求“必须 18:00 发布、不可更改”，不能自动改时段；请确认是否同意改为 19:00 发布"
+        ],
+        "risk_reasons": [
+          "目标时段 18:00 被 M99 占用，硬性要求不可自动变更"
+        ]
+      },
+      "result_summary": {
+        "saved": false,
+        "duplicate": false,
+        "draft_status": "none",
+        "blocked": true,
+        "error": "硬性要求 2026-10-28 18:00 未被满足，未经用户同意不得更改，未保存"
+      },
+      "next_action": "finish",
+      "decision_basis": "18:00 被 M99 占用，19:00 空闲；硬性要求不可擅自改时段，故以 19:00 为替代时段保存草稿并标记待确认"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M05",
+          "review_status": "blocked",
+          "risk_reasons": [
+            "目标时段 2026-10-28 18:00 已被 M99 占用",
+            "硬性要求为“必须 18:00 发布、不可更改”，规则检查虽全部通过，但时段冲突导致无法按硬性要求保存草稿",
+            "尝试以替代时段 19:00 保存草稿被系统阻断（硬性要求未被满足，未经用户同意不得更改）",
+            "硬性要求 2026-10-28 18:00 未被满足，未经用户同意不得更改，未保存",
+            "硬性要求 2026-10-28 18:00 已被 M99 占用"
+          ],
+          "suggested_slot": null,
+          "pending_confirmations": [
+            "18:00 已被 M99 占用且该时段为硬性不可更改要求；请确认是否同意将 M05 改为 2026-10-28 19:00 发布",
+            "硬性要求 2026-10-28 18:00 未被满足，未经用户同意不得更改，未保存"
+          ],
+          "draft_status": "none",
+          "draft_id": null,
+          "error": null
+        }
+      ],
+      "unfinished": false,
+      "summary": {
+        "total": 1,
+        "approved": 0,
+        "blocked": 1,
+        "pending_confirmation": 0,
+        "info_missing": 0,
+        "draft_failed": 0
+      }
+    },
+    "decision_basis": "18:00 被 M99 占用，19:00 空闲；硬性要求“必须 18:00、不可更改”不能自动改时段，尝试以 19:00 保存草稿被系统阻断，故 M05 记为 blocked 并询问是否同意改期"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "results": [],
+  "summary": {
+    "total": 0,
+    "approved": 0,
+    "blocked": 0,
+    "pending_confirmation": 0,
+    "info_missing": 0,
+    "draft_failed": 0
+  },
+  "unfinished": true,
+  "reason": "模型决策失败（ProxyError），任务未完成",
+  "steps_executed": 1,
+  "completed": 0
+}

@@ -1,0 +1,22 @@
+{
+  "mode": "real",
+  "cases": [
+    {
+      "case": "normal",
+      "passed": false,
+      "meta": {
+        "case": "normal",
+        "input": "examples/input_normal.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:14:50.038557+00:00",
+        "source_sha256": "3892a5182df3cdfe0318540e2cdbcc0a7d16dfde5fe374b7dac52165ad0c6b1d"
+      },
+      "steps": 0,
+      "unfinished": true,
+      "reason": "模型决策失败（ProxyError），任务未完成"
+    }
+  ],
+  "passed": false
+}

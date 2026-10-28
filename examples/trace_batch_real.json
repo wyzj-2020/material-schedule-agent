@@ -1,0 +1,391 @@
+{
+  "meta": {
+    "input": "examples/input_batch.json",
+    "mode": "real",
+    "max_steps": 12
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M01"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M01",
+        "material": {
+          "id": "M01",
+          "title": "新品发布会预告",
+          "content_type": "video",
+          "category": "marketing",
+          "author": "team_a",
+          "duration_minutes": 3
+        },
+        "missing_fields": []
+      },
+      "next_action": "read_material",
+      "decision_basis": "模型依据观察结果选择该动作"
+    },
+    {
+      "step": 2,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M02"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M02",
+        "material": {
+          "id": "M02",
+          "title": "产品使用教程",
+          "content_type": "article",
+          "category": "education",
+          "author": "team_b",
+          "duration_minutes": null
+        },
+        "missing_fields": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "模型依据观察结果选择该动作"
+    },
+    {
+      "step": 3,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M01"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M01",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": false,
+        "any_risk": false,
+        "risk_reasons": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "模型依据观察结果选择该动作"
+    },
+    {
+      "step": 4,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M02"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M02",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": false,
+        "any_risk": false,
+        "risk_reasons": []
+      },
+      "next_action": "query_slots",
+      "decision_basis": "模型依据观察结果选择该动作"
+    },
+    {
+      "step": 5,
+      "tool": "query_slots",
+      "args": {
+        "material_id": "M01",
+        "date": "2026-10-28",
+        "start_time": "18:00",
+        "end_time": "19:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M01",
+        "slots": [
+          {
+            "time": "18:00",
+            "status": "occupied",
+            "occupied_by": "M99"
+          },
+          {
+            "time": "19:00",
+            "status": "free"
+          }
+        ],
+        "free_times": [
+          "19:00"
+        ]
+      },
+      "next_action": "query_slots",
+      "decision_basis": "模型依据观察结果选择该动作"
+    },
+    {
+      "step": 6,
+      "tool": "query_slots",
+      "args": {
+        "date": "2026-10-28",
+        "material_id": "M02",
+        "start_time": "19:00",
+        "end_time": "20:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M02",
+        "slots": [
+          {
+            "time": "19:00",
+            "status": "free"
+          },
+          {
+            "time": "20:00",
+            "status": "occupied",
+            "occupied_by": "M98"
+          }
+        ],
+        "free_times": [
+          "19:00"
+        ]
+      },
+      "next_action": "query_slots",
+      "decision_basis": "模型依据观察结果选择该动作"
+    },
+    {
+      "step": 7,
+      "tool": "query_slots",
+      "args": {
+        "date": "2026-10-28",
+        "material_id": "M01",
+        "end_time": "22:00",
+        "start_time": "17:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M01",
+        "slots": [
+          {
+            "time": "18:00",
+            "status": "occupied",
+            "occupied_by": "M99"
+          },
+          {
+            "time": "19:00",
+            "status": "free"
+          },
+          {
+            "time": "20:00",
+            "status": "occupied",
+            "occupied_by": "M98"
+          },
+          {
+            "time": "21:00",
+            "status": "free"
+          }
+        ],
+        "free_times": [
+          "19:00",
+          "21:00"
+        ]
+      },
+      "next_action": "query_slots",
+      "decision_basis": "模型依据观察结果选择该动作"
+    },
+    {
+      "step": 8,
+      "tool": "query_slots",
+      "args": {
+        "date": "2026-10-28",
+        "end_time": "22:00",
+        "start_time": "17:00",
+        "material_id": "M02"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M02",
+        "slots": [
+          {
+            "time": "18:00",
+            "status": "occupied",
+            "occupied_by": "M99"
+          },
+          {
+            "time": "19:00",
+            "status": "free"
+          },
+          {
+            "time": "20:00",
+            "status": "occupied",
+            "occupied_by": "M98"
+          },
+          {
+            "time": "21:00",
+            "status": "free"
+          }
+        ],
+        "free_times": [
+          "19:00",
+          "21:00"
+        ]
+      },
+      "next_action": "save_draft",
+      "decision_basis": "模型依据观察结果选择该动作"
+    },
+    {
+      "step": 9,
+      "tool": "save_draft",
+      "args": {
+        "material_id": "M01",
+        "date": "2026-10-28",
+        "time": "19:00",
+        "review_status": "pending_confirmation",
+        "pending_confirmations": [
+          "原倾向 18:00 已被占用（M99），改为 19:00，待确认"
+        ],
+        "risk_reasons": [
+          "18:00 时段被 M99 占用，软性要求改用 19:00"
+        ]
+      },
+      "result_summary": {
+        "saved": true,
+        "duplicate": false,
+        "draft_status": "saved",
+        "draft_id": "D001"
+      },
+      "next_action": "save_draft",
+      "decision_basis": "模型依据观察结果选择该动作"
+    },
+    {
+      "step": 10,
+      "tool": "save_draft",
+      "args": {
+        "date": "2026-10-28",
+        "material_id": "M02",
+        "pending_confirmations": [
+          "倾向 19:00 已被 M01 占用，改为 21:00，待确认"
+        ],
+        "review_status": "pending_confirmation",
+        "risk_reasons": [
+          "19:00 分配给 M01，M02 软性要求改至 21:00"
+        ],
+        "time": "21:00"
+      },
+      "result_summary": {
+        "saved": true,
+        "duplicate": false,
+        "draft_status": "saved",
+        "draft_id": "D002"
+      },
+      "next_action": "finish",
+      "decision_basis": "模型依据观察结果选择该动作"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M01",
+          "review_status": "pending_confirmation",
+          "risk_reasons": [
+            "目标 18:00 被 M99 占用，软性要求仅可给替代时段"
+          ],
+          "suggested_slot": {
+            "date": "2026-10-28",
+            "time": "19:00"
+          },
+          "pending_confirmations": [
+            "原倾向 18:00 已被占用（M99），改为 19:00，待确认"
+          ],
+          "draft_status": "saved",
+          "draft_id": "D001",
+          "error": null
+        },
+        {
+          "material_id": "M02",
+          "review_status": "pending_confirmation",
+          "risk_reasons": [
+            "倾向 19:00 已分配给 M01，改用 21:00"
+          ],
+          "suggested_slot": {
+            "date": "2026-10-28",
+            "time": "21:00"
+          },
+          "pending_confirmations": [
+            "倾向 19:00 已被 M01 占用，改为 21:00，待确认"
+          ],
+          "draft_status": "saved",
+          "draft_id": "D002",
+          "error": null
+        }
+      ],
+      "unfinished": false,
+      "summary": {
+        "total": 2,
+        "approved": 0,
+        "blocked": 0,
+        "pending_confirmation": 2,
+        "info_missing": 0,
+        "draft_failed": 0
+      }
+    }
+  }
+}

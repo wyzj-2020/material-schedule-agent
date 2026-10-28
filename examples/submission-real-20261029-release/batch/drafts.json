@@ -1,0 +1,26 @@
+[
+  {
+    "draft_id": "D001",
+    "dedup_key": "7686d17309acf5d3a1d1a7d345e97eb60130dae4",
+    "material_id": "M01",
+    "date": "2026-10-28",
+    "time": "21:00",
+    "review_status": "pending_confirmation",
+    "risk_reasons": [
+      "目标时段 18:00 已被 M99 占用（软性偏好冲突）"
+    ],
+    "pending_confirmations": [
+      "18:00 已被 M99 占用，建议改至 21:00 发布（19:00 已留给目标即 19:00 的 M02），请确认是否接受 21:00"
+    ]
+  },
+  {
+    "draft_id": "D002",
+    "dedup_key": "737cbada8865fcba3295053006931f331dc6b71c",
+    "material_id": "M02",
+    "date": "2026-10-28",
+    "time": "19:00",
+    "review_status": "approved",
+    "pending_confirmations": [],
+    "risk_reasons": []
+  }
+]

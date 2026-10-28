@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "case": "normal",
+    "input": "examples/input_normal.json",
+    "mode": "real",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "started_at_utc": "2026-10-28T16:15:00.021814+00:00",
+    "source_sha256": "3892a5182df3cdfe0318540e2cdbcc0a7d16dfde5fe374b7dac52165ad0c6b1d"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M01"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M01",
+        "material": {
+          "id": "M01",
+          "title": "新品发布会预告",
+          "content_type": "video",
+          "category": "marketing",
+          "author": "team_a",
+          "duration_minutes": 3
+        },
+        "missing_fields": []
+      },
+      "next_action": "finish",
+      "decision_basis": "请求给出 M01 目标时段 2026-10-28 18:00，需读取素材元数据。"
+    }
+  ],
+  "final": {
+    "unfinished": true,
+    "result": {
+      "results": [],
+      "summary": {
+        "total": 0,
+        "approved": 0,
+        "blocked": 0,
+        "pending_confirmation": 0,
+        "info_missing": 0,
+        "draft_failed": 0
+      },
+      "unfinished": true,
+      "reason": "模型决策失败（HTTPError），任务未完成",
+      "steps_executed": 2,
+      "completed": 0
+    }
+  }
+}

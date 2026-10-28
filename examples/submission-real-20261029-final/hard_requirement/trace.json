@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "case": "hard_requirement",
+    "input": "examples/input_hard_requirement.json",
+    "mode": "real",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "started_at_utc": "2026-10-28T16:21:47.429373+00:00",
+    "source_sha256": "9bf1913b50ebebe17b67814bc7a26ab9b2568685c72a072883a42cbc9b92b12c"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M05"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M05",
+        "material": {
+          "id": "M05",
+          "title": "重要公告",
+          "content_type": "article",
+          "category": "announcement",
+          "author": "team_a",
+          "duration_minutes": null
+        },
+        "missing_fields": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "请求给出素材 M05，目标时段 2026-10-28 18:00，含一条 hard 要求（18:00 不可更改），先读取元数据。"
+    },
+    {
+      "step": 2,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M05"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M05",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": false,
+        "any_risk": false,
+        "risk_reasons": []
+      },
+      "next_action": "query_slots",
+      "decision_basis": "对 M05 执行审核规则检查，确认是否存在 confirm/warn/block 动作。"
+    },
+    {
+      "step": 3,
+      "tool": "query_slots",
+      "args": {
+        "material_id": "M05",
+        "date": "2026-10-28",
+        "start_time": "17:00",
+        "end_time": "19:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M05",
+        "slots": [
+          {
+            "time": "18:00",
+            "status": "occupied",
+            "occupied_by": "M99"
+          },
+          {
+            "time": "19:00",
+            "status": "free"
+          }
+        ],
+        "free_times": [
+          "19:00"
+        ]
+      },
+      "next_action": "finish",
+      "decision_basis": "M05 硬性要求 18:00 发布，查询 2026-10-28 17:00-19:00 时段占用，确认 18:00 是否可用（不含改时段意图）。"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M05",
+          "review_status": "blocked",
+          "risk_reasons": [],
+          "suggested_slot": null,
+          "pending_confirmations": [],
+          "draft_status": "none",
+          "draft_id": null,
+          "error": null
+        }
+      ],
+      "unfinished": false,
+      "summary": {
+        "total": 1,
+        "approved": 0,
+        "blocked": 1,
+        "pending_confirmation": 0,
+        "info_missing": 0,
+        "draft_failed": 0
+      }
+    },
+    "decision_basis": "M05 元数据完整、四项规则均 pass（any_block=false、any_risk=false）；查询结果显示 2026-10-28 18:00 状态 occupied（occupied_by M99）、仅 19:00 空闲。其要求为 hard（必须 18:00 不可更改），故按规则 2 阻断而不自动改时段，blocked 素材不调用 save_draft（draft_status=none）。"
+  }
+}

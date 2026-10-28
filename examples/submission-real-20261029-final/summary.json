@@ -1,0 +1,86 @@
+{
+  "mode": "real",
+  "cases": [
+    {
+      "case": "normal",
+      "passed": true,
+      "meta": {
+        "case": "normal",
+        "input": "examples/input_normal.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:21:14.234273+00:00",
+        "source_sha256": "9bf1913b50ebebe17b67814bc7a26ab9b2568685c72a072883a42cbc9b92b12c"
+      },
+      "steps": 9,
+      "unfinished": false,
+      "reason": null
+    },
+    {
+      "case": "normal_rerun",
+      "passed": true,
+      "meta": {
+        "case": "normal_rerun",
+        "input": "examples/input_normal.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:21:27.553499+00:00",
+        "source_sha256": "9bf1913b50ebebe17b67814bc7a26ab9b2568685c72a072883a42cbc9b92b12c"
+      },
+      "steps": 8,
+      "unfinished": false,
+      "reason": null
+    },
+    {
+      "case": "rule_risk",
+      "passed": true,
+      "meta": {
+        "case": "rule_risk",
+        "input": "examples/input_rule_risk.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:21:37.272530+00:00",
+        "source_sha256": "9bf1913b50ebebe17b67814bc7a26ab9b2568685c72a072883a42cbc9b92b12c"
+      },
+      "steps": 2,
+      "unfinished": false,
+      "reason": null
+    },
+    {
+      "case": "missing_info",
+      "passed": true,
+      "meta": {
+        "case": "missing_info",
+        "input": "examples/input_missing_info.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:21:42.379370+00:00",
+        "source_sha256": "9bf1913b50ebebe17b67814bc7a26ab9b2568685c72a072883a42cbc9b92b12c"
+      },
+      "steps": 2,
+      "unfinished": false,
+      "reason": null
+    },
+    {
+      "case": "hard_requirement",
+      "passed": false,
+      "meta": {
+        "case": "hard_requirement",
+        "input": "examples/input_hard_requirement.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:21:47.429373+00:00",
+        "source_sha256": "9bf1913b50ebebe17b67814bc7a26ab9b2568685c72a072883a42cbc9b92b12c"
+      },
+      "steps": 3,
+      "unfinished": false,
+      "reason": null
+    }
+  ],
+  "passed": false
+}

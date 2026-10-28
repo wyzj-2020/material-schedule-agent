@@ -1,0 +1,24 @@
+[
+  {
+    "draft_id": "D001",
+    "dedup_key": "582a2d1df9e0c55ed510778f70aea3fbf06093b8",
+    "material_id": "M01",
+    "date": "2026-10-28",
+    "time": "19:00",
+    "review_status": "pending_confirmation",
+    "pending_confirmations": [
+      "目标时段 18:00 被占用，建议调整为 19:00，请确认"
+    ],
+    "risk_reasons": []
+  },
+  {
+    "draft_id": "D002",
+    "dedup_key": "e2add040328203a040b08aae58eb24b67aafeaa5",
+    "material_id": "M02",
+    "date": "2026-10-28",
+    "time": "10:00",
+    "review_status": "approved",
+    "pending_confirmations": [],
+    "risk_reasons": []
+  }
+]

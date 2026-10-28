@@ -1,0 +1,32 @@
+{
+  "results": [
+    {
+      "material_id": "M05",
+      "review_status": "blocked",
+      "risk_reasons": [
+        "目标时段 2026-10-28 18:00 已被 M99 占用",
+        "硬性要求为“必须 18:00 发布、不可更改”，规则检查虽全部通过，但时段冲突导致无法按硬性要求保存草稿",
+        "尝试以替代时段 19:00 保存草稿被系统阻断（硬性要求未被满足，未经用户同意不得更改）",
+        "硬性要求 2026-10-28 18:00 未被满足，未经用户同意不得更改，未保存",
+        "硬性要求 2026-10-28 18:00 已被 M99 占用"
+      ],
+      "suggested_slot": null,
+      "pending_confirmations": [
+        "18:00 已被 M99 占用且该时段为硬性不可更改要求；请确认是否同意将 M05 改为 2026-10-28 19:00 发布",
+        "硬性要求 2026-10-28 18:00 未被满足，未经用户同意不得更改，未保存"
+      ],
+      "draft_status": "none",
+      "draft_id": null,
+      "error": null
+    }
+  ],
+  "unfinished": false,
+  "summary": {
+    "total": 1,
+    "approved": 0,
+    "blocked": 1,
+    "pending_confirmation": 0,
+    "info_missing": 0,
+    "draft_failed": 0
+  }
+}

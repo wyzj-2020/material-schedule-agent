@@ -1,0 +1,21 @@
+[
+  {
+    "draft_id": "D001",
+    "dedup_key": "582a2d1df9e0c55ed510778f70aea3fbf06093b8",
+    "material_id": "M01",
+    "date": "2026-10-28",
+    "time": "19:00",
+    "review_status": "pending_confirmation",
+    "pending_confirmations": [
+      "原目标时段 18:00 已被 M99 占用；M01 仅提出 soft 偏好（倾向 18:00），已改排至最近的空闲时段 19:00，待确认"
+    ]
+  },
+  {
+    "draft_id": "D002",
+    "dedup_key": "e2add040328203a040b08aae58eb24b67aafeaa5",
+    "material_id": "M02",
+    "date": "2026-10-28",
+    "time": "10:00",
+    "review_status": "approved"
+  }
+]

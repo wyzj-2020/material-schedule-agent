@@ -1,0 +1,27 @@
+{
+  "results": [
+    {
+      "material_id": "M04",
+      "review_status": "blocked",
+      "risk_reasons": [
+        "R1 敏感内容复核未通过（high/block）：类别为敏感内容，需人工复核后方可排期"
+      ],
+      "suggested_slot": null,
+      "pending_confirmations": [
+        "需先完成敏感内容人工复核；复核通过后可使用空闲的 2026-10-28 10:00（软性倾向时段，未占用）"
+      ],
+      "draft_status": "none",
+      "draft_id": null,
+      "error": null
+    }
+  ],
+  "unfinished": false,
+  "summary": {
+    "total": 1,
+    "approved": 0,
+    "blocked": 1,
+    "pending_confirmation": 0,
+    "info_missing": 0,
+    "draft_failed": 0
+  }
+}

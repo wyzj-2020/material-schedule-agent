@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "input": "examples/input_hard_requirement.json",
+    "mode": "mock",
+    "max_steps": 12
+  },
+  "steps": [
+    {
+      "step": 1,
+      "tool": "read_material",
+      "args": {
+        "material_id": "M05"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M05",
+        "material": {
+          "id": "M05",
+          "title": "重要公告",
+          "content_type": "article",
+          "category": "announcement",
+          "author": "team_a",
+          "duration_minutes": null
+        },
+        "missing_fields": []
+      },
+      "next_action": "check_rule",
+      "decision_basis": "开始处理 M05，先读取元数据"
+    },
+    {
+      "step": 2,
+      "tool": "check_rule",
+      "args": {
+        "material_id": "M05"
+      },
+      "result_summary": {
+        "found": true,
+        "material_id": "M05",
+        "results": [
+          {
+            "rule_id": "R1",
+            "name": "敏感内容复核",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R2",
+            "name": "视频时长缺失",
+            "passed": true,
+            "severity": "high",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R3",
+            "name": "超长内容确认",
+            "passed": true,
+            "severity": "medium",
+            "action": "pass",
+            "message": ""
+          },
+          {
+            "rule_id": "R4",
+            "name": "作者白名单",
+            "passed": true,
+            "severity": "low",
+            "action": "pass",
+            "message": ""
+          }
+        ],
+        "any_block": false,
+        "any_risk": false,
+        "risk_reasons": []
+      },
+      "next_action": "query_slots",
+      "decision_basis": "元数据完整，进入规则检查"
+    },
+    {
+      "step": 3,
+      "tool": "query_slots",
+      "args": {
+        "material_id": "M05",
+        "date": "2026-10-28",
+        "start_time": "18:00",
+        "end_time": "18:00"
+      },
+      "result_summary": {
+        "date": "2026-10-28",
+        "material_id": "M05",
+        "slots": [
+          {
+            "time": "18:00",
+            "status": "occupied",
+            "occupied_by": "M99"
+          }
+        ],
+        "free_times": []
+      },
+      "next_action": "finish",
+      "decision_basis": "规则无阻断，查询目标时段 18:00 的占用情况"
+    }
+  ],
+  "final": {
+    "unfinished": false,
+    "result": {
+      "results": [
+        {
+          "material_id": "M05",
+          "review_status": "blocked",
+          "risk_reasons": [
+            "硬性要求时段 18:00 已被 M99 占用"
+          ],
+          "suggested_slot": null,
+          "pending_confirmations": [
+            "硬性要求 18:00 冲突，需用户确认是否变更，未经用户同意不得更改"
+          ],
+          "draft_status": "none",
+          "draft_id": null,
+          "error": null
+        }
+      ],
+      "summary": {
+        "total": 1,
+        "approved": 0,
+        "blocked": 1,
+        "pending_confirmation": 0,
+        "info_missing": 0,
+        "draft_failed": 0
+      },
+      "unfinished": false
+    }
+  }
+}

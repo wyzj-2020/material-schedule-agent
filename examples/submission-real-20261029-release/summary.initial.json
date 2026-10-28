@@ -1,0 +1,118 @@
+{
+  "mode": "real",
+  "cases": [
+    {
+      "case": "normal",
+      "passed": true,
+      "meta": {
+        "case": "normal",
+        "input": "examples/input_normal.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:25:29.315325+00:00",
+        "source_sha256": "253e6e74f906af59666f9ec0736fa7c30ed7672959c1c3fc8cfb1ae2cc41e0d0"
+      },
+      "steps": 9,
+      "unfinished": false,
+      "reason": null
+    },
+    {
+      "case": "normal_rerun",
+      "passed": true,
+      "meta": {
+        "case": "normal_rerun",
+        "input": "examples/input_normal.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:25:41.863546+00:00",
+        "source_sha256": "253e6e74f906af59666f9ec0736fa7c30ed7672959c1c3fc8cfb1ae2cc41e0d0"
+      },
+      "steps": 9,
+      "unfinished": false,
+      "reason": null
+    },
+    {
+      "case": "rule_risk",
+      "passed": true,
+      "meta": {
+        "case": "rule_risk",
+        "input": "examples/input_rule_risk.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:25:54.087550+00:00",
+        "source_sha256": "253e6e74f906af59666f9ec0736fa7c30ed7672959c1c3fc8cfb1ae2cc41e0d0"
+      },
+      "steps": 3,
+      "unfinished": false,
+      "reason": null
+    },
+    {
+      "case": "missing_info",
+      "passed": true,
+      "meta": {
+        "case": "missing_info",
+        "input": "examples/input_missing_info.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:26:00.758240+00:00",
+        "source_sha256": "253e6e74f906af59666f9ec0736fa7c30ed7672959c1c3fc8cfb1ae2cc41e0d0"
+      },
+      "steps": 3,
+      "unfinished": false,
+      "reason": null
+    },
+    {
+      "case": "hard_requirement",
+      "passed": true,
+      "meta": {
+        "case": "hard_requirement",
+        "input": "examples/input_hard_requirement.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:26:06.932353+00:00",
+        "source_sha256": "253e6e74f906af59666f9ec0736fa7c30ed7672959c1c3fc8cfb1ae2cc41e0d0"
+      },
+      "steps": 4,
+      "unfinished": false,
+      "reason": null
+    },
+    {
+      "case": "save_fail",
+      "passed": true,
+      "meta": {
+        "case": "save_fail",
+        "input": "examples/input_save_fail.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:26:19.232898+00:00",
+        "source_sha256": "253e6e74f906af59666f9ec0736fa7c30ed7672959c1c3fc8cfb1ae2cc41e0d0"
+      },
+      "steps": 5,
+      "unfinished": false,
+      "reason": null
+    },
+    {
+      "case": "batch",
+      "passed": false,
+      "meta": {
+        "case": "batch",
+        "input": "examples/input_batch.json",
+        "mode": "real",
+        "model": "deepseek-v4-flash",
+        "base_url": "https://api.deepseek.com",
+        "started_at_utc": "2026-10-28T16:26:27.357337+00:00",
+        "source_sha256": "253e6e74f906af59666f9ec0736fa7c30ed7672959c1c3fc8cfb1ae2cc41e0d0"
+      },
+      "steps": 10,
+      "unfinished": false,
+      "reason": null
+    }
+  ],
+  "passed": false
+}

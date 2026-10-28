@@ -1,0 +1,43 @@
+{
+  "results": [
+    {
+      "material_id": "M01",
+      "review_status": "pending_confirmation",
+      "risk_reasons": [
+        "目标时段 18:00 已被 M99 占用"
+      ],
+      "suggested_slot": {
+        "date": "2026-10-28",
+        "time": "19:00"
+      },
+      "pending_confirmations": [
+        "软性要求偏好 18:00，但该时段已被 M99 占用；已提供替代时段 19:00（当日 16:00-20:00 区间唯一空闲时段），待确认是否接受"
+      ],
+      "draft_status": "duplicate",
+      "draft_id": "D002",
+      "error": null
+    },
+    {
+      "material_id": "M02",
+      "review_status": "approved",
+      "risk_reasons": [],
+      "suggested_slot": {
+        "date": "2026-10-28",
+        "time": "10:00"
+      },
+      "pending_confirmations": [],
+      "draft_status": "duplicate",
+      "draft_id": "D001",
+      "error": null
+    }
+  ],
+  "unfinished": false,
+  "summary": {
+    "total": 2,
+    "approved": 1,
+    "blocked": 0,
+    "pending_confirmation": 1,
+    "info_missing": 0,
+    "draft_failed": 0
+  }
+}

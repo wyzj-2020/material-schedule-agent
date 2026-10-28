@@ -1,0 +1,27 @@
+{
+  "results": [
+    {
+      "material_id": "M05",
+      "review_status": "blocked",
+      "risk_reasons": [
+        "硬性要求时段 18:00 已被 M99 占用"
+      ],
+      "suggested_slot": null,
+      "pending_confirmations": [
+        "硬性要求 18:00 冲突，需用户确认是否变更，未经用户同意不得更改"
+      ],
+      "draft_status": "none",
+      "draft_id": null,
+      "error": null
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "approved": 0,
+    "blocked": 1,
+    "pending_confirmation": 0,
+    "info_missing": 0,
+    "draft_failed": 0
+  },
+  "unfinished": false
+}

@@ -1,0 +1,25 @@
+{
+  "results": [
+    {
+      "material_id": "M04",
+      "review_status": "blocked",
+      "risk_reasons": [
+        "类别为敏感内容，需人工复核后方可排期（规则 R1，high，block）"
+      ],
+      "suggested_slot": null,
+      "pending_confirmations": [],
+      "draft_status": "none",
+      "draft_id": null,
+      "error": null
+    }
+  ],
+  "unfinished": false,
+  "summary": {
+    "total": 1,
+    "approved": 0,
+    "blocked": 1,
+    "pending_confirmation": 0,
+    "info_missing": 0,
+    "draft_failed": 0
+  }
+}

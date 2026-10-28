@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-28",
+  "materials": [
+    {
+      "material_id": "M05",
+      "target_time": "18:00",
+      "requirements": [
+        {
+          "kind": "hard",
+          "text": "必须 18:00 发布，不可更改"
+        }
+      ]
+    }
+  ]
+}

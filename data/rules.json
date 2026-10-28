@@ -1,0 +1,34 @@
+[
+  {
+    "id": "R1",
+    "name": "敏感内容复核",
+    "when": { "category": "sensitive" },
+    "severity": "high",
+    "action": "block",
+    "message": "类别为敏感内容，需人工复核后方可排期"
+  },
+  {
+    "id": "R2",
+    "name": "视频时长缺失",
+    "when": { "content_type": "video", "duration_missing": true },
+    "severity": "high",
+    "action": "block",
+    "message": "视频素材缺少时长信息，无法校验时段长度"
+  },
+  {
+    "id": "R3",
+    "name": "超长内容确认",
+    "when": { "duration_gte": 60 },
+    "severity": "medium",
+    "action": "confirm",
+    "message": "内容时长超过 60 分钟，请确认目标时段长度足够"
+  },
+  {
+    "id": "R4",
+    "name": "作者白名单",
+    "when": { "author_not_in": ["team_a", "team_b", "team_c"] },
+    "severity": "low",
+    "action": "warn",
+    "message": "作者不在白名单内，建议人工确认"
+  }
+]

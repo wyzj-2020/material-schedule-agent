@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-28",
+  "materials": [
+    {
+      "material_id": "M04",
+      "target_time": "10:00",
+      "requirements": [{ "kind": "soft", "text": "倾向 10:00 发布" }]
+    }
+  ]
+}
