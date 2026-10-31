@@ -74,7 +74,7 @@ python -m src.main --mock --input examples/input_normal.json --drafts-file examp
 
 ### 真实模型模式（可选）
 
-把密钥写入项目根目录 `.env`（已被 `.gitignore` 忽略，**切勿写进 `.env.example`**），不配置则自动用离线 Mock：
+把密钥写入项目根目录 `.env`，不配置则自动用离线 Mock：
 
 ```bash
 cp .env.example .env   # 然后填入 DEEPSEEK_API_KEY
